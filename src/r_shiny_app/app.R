@@ -8,7 +8,7 @@ library(here)
 library(dplyr)
 library(stringdist)
 
-API_URL  <- "http://127.0.0.1:8000"
+API_URL  <- "http://ec2-54-183-183-87.us-west-1.compute.amazonaws.com:8000"
 DATA_CSV <- here("data", "playlist_enriched.csv")
 all_df   <- read.csv(DATA_CSV, stringsAsFactors = FALSE)
 
@@ -72,7 +72,7 @@ ui <- fluidPage(
   ),
   
   div(class="footer-text",
-      "Source: Top 50 Songs of 2024", br(), "Derek Wen · STATS 418")
+      "Source: Top 50 Most Streamed Songs", br(), "Derek Wen · STATS 418")
 )
 
 # server

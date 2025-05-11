@@ -1,0 +1,10 @@
+name: spotify-cover-art-quiz
+title:
+username: dwen
+account: dwen
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14729107
+bundleId: 10263333
+url: https://dwen.shinyapps.io/spotify-cover-art-quiz/
+version: 1

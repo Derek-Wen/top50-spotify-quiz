@@ -1,6 +1,7 @@
 # src/api/app.py
 import pickle, pandas as pd
 from flask import Flask, jsonify, abort, request
+from flask_cors import CORS
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 
@@ -27,6 +28,7 @@ def nearest(track_id: str, k: int):
               .reset_index().to_dict(orient="records"))
 
 app = Flask(__name__)
+CORS(app)
 
 @app.get("/recommend/<track_id>")
 def recommend(track_id):
