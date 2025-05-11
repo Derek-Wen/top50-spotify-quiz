@@ -51,8 +51,10 @@ Data was gathered using Spotify’s Web API with a Python script:
 
 A recommendation system was developed using k-Nearest Neighbors (k-NN):
 
-* Numeric features were scaled using a StandardScaler.
+* All numerical features scaled using StandardScaler to ensure equal influence in distance calculations
+* Each song is represented by a numeric feature vector
 * k-NN identifies tracks similar to a user-selected song.
+* Similarity measured using Euclidean distance after scaling
 
 **Model Artifacts:**
 
@@ -76,13 +78,13 @@ Returns a JSON response of recommended tracks.
 
 The interactive quiz UI was built using R Shiny:
 
-* Users guess the song and artist from the displayed Spotify cover art.
-* After each guess, the API provides similar song recommendations.
-* Users can play multiple rounds, with scores calculated based on accuracy.
+* Users guess the song name and artist name from the displayed Spotify cover art.
+* After each guess, the model provides similar song recommendations.
+* Users can play up to five rounds in a session, with scores calculated based on how many they got corrected out of the total songs.
 
 ## Results
 
-The deployed Shiny application allows users to enjoy an interactive quiz experience testing their music knowledge and memory.
+The deployed Shiny application allows users to play a quiz to test their music knowledge and memory.
 
 **Example of Interactive Quiz:**
 
