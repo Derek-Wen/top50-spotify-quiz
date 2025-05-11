@@ -10,7 +10,9 @@ The Spotify Cover Art Quiz is an interactive web-based application that quizzes 
 
 ## Exploratory Data Analysis
 
-Our dataset was created by fetching data from Spotify's "Top 50 Songs of 2024" playlist using Spotify's Web API.
+Our dataset was created by fetching data from a Spotify playlist "Top 50 Most Streamed Songs" using Spotify's Web API.
+
+[Spotify Playlist](https://open.spotify.com/playlist/7z4ebkPXukjtS08NxvoyoN?si=7876a0a8a6f44e60)
 
 ### Distribution of Artist Followers
 
@@ -113,6 +115,4 @@ docker run -d --name spotify-api \
 
 ---
 
-**Copyright:** Derek Wen, UCLA MASDS 2026
-
-**Last Updated:** 05/11/2025
+Derek Wen, UCLA MASDS
