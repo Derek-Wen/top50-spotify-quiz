@@ -7,10 +7,7 @@ This Flask API serves as the backend recommendation engine for the Spotify Cover
 ## Structure
 
 - **`app.py`**: Flask application script, handling API requests.
-- **`models/`**: Contains serialized models and scaler for generating recommendations.
-  - **`X_full.pkl`**: Dataset for nearest neighbor searches.
-  - **`scaler.pkl`**: Feature scaler object.
-  - **`nn_model.pkl`**: k-NN recommendation model.
+- **`Dockerfile`**: Docker Image.
 
 ## Endpoints:
 
