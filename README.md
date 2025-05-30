@@ -86,7 +86,7 @@ The interactive quiz UI was built using R Shiny:
 
 The deployed Shiny application allows users to play a quiz to test their music knowledge and memory.
 
-**Example of Interactive Quiz:**
+**Example of The Quiz:**
 
 ![Shiny App Screenshot](imgs/shiny_quiz_example.png "Spotify Cover Art Quiz Example")
 
@@ -94,7 +94,7 @@ The deployed Shiny application allows users to play a quiz to test their music k
 
 The application components are hosted separately:
 
-* **Quiz UI (R Shiny):** [Spotify Cover Art Quiz](https://dwen.shinyapps.io/spotify-cover-art-quiz/)
+* **Quiz UI:** R Shiny hosted on shinyapps.io.
 * **Recommendation API:** Flask API running inside a Docker container on Amazon EC2 instance.
 
 ### Deploying the Shiny App:
