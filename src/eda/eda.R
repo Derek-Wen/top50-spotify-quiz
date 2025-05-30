@@ -31,7 +31,7 @@ walk(num_cols, function(col){
   if(col == "artist_followers"){
     p <- p + geom_histogram(fill="#1DB954", colour="black", bins=20) +
       scale_x_log10(labels = comma) +
-      labs(title="artist_followers (log10 scale)", x="Followers (log10)")
+      labs(title="artist_followers", x="Followers")
   } else {
     p <- p + geom_histogram(fill="#1DB954", colour="black", bins=30) +
       labs(title = col)
