@@ -91,7 +91,7 @@ Returns a JSON response of recommended tracks.
 
 ### Running the Flask API (Docker on EC2):
 
-The EC2 security group music allow inbound port 8000.
+The EC2 security group must allow inbound port 8000.
 
 ```bash
 cd ~/spotify-api
