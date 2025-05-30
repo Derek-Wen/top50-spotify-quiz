@@ -16,25 +16,25 @@ Our dataset was created by fetching data from a Spotify playlist "Top 50 Most St
 
 ### Distribution of Artist Followers
 
-This histogram shows the distribution of followers for the artists featured in the playlist.
+This histogram shows the distribution of followers for the artists featured in the playlist. The distribution is highly left-skewed, with most artists having a very large following and few artists having a relatively smaller following.
 
 ![Artist Followers Histogram](imgs/artist_followers_hist.png "Artist Followers Histogram")
 
 ### Distribution of Artist Country
 
-This histogram shows the distribution of countries for the artists featured in the playlist.
+This histogram shows the distribution of countries for the artists featured in the playlist. Artists are majority in the US, followed by the UK, with other countries contributing only modestly.
 
 ![Artist Country Histogram](imgs/country_top15.png "Artist Country Histogram")
 
 ### Distribution of Top Genres
 
-This barplot shows the distribution of the top genres featured in the playlist.
+This barplot shows the distribution of the top genres featured in the playlist. Soft pop is the most frequent genre, followed by rap”and pop, with all other genres appearing only once
 
 ![Top Genres Histogram](imgs/genres_top15.png "Top Genres Barplot")
 
 ### Feature Correlation Heatmap
 
-The heatmap below illustrates correlations among numerical track metadata features, including popularity, duration, explicitness, and artist followers.
+The heatmap below illustrates correlations among numerical track metadata features, including popularity, duration, explicitness, and artist followers. Artist follower counts and artist popularity are strongly positively correlated, age (days since release) and track duration show a moderate positive relationship, and overall song popularity exhibits only very weak correlations with the other numeric features
 
 ![Feature Correlation Heatmap](imgs/corr_heatmap.png "Feature Correlation Heatmap")
 
