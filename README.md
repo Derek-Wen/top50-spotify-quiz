@@ -42,7 +42,7 @@ The heatmap below illustrates correlations among numerical track metadata featur
 
 ### Data Collection
 
-Data was gathered using Spotify’s Web API with a Python script:
+Data was gathered and stored using Spotify’s Web API with a Python script `src/fetch_top50.py`:
 
 * Track metadata includes song name, artists, popularity, duration, explicitness, and cover art URL.
 * Artist metadata includes genres, artist popularity, and followers.
@@ -56,11 +56,26 @@ A recommendation system was developed using k-Nearest Neighbors (k-NN):
 * k-NN identifies tracks similar to a user-selected song.
 * Similarity measured using Euclidean distance after scaling
 
+| Numeric features |
+|------------------|
+| popularity (track) |
+| duration_ms |
+| explicit (0/1) |
+| age_days (days since release) |
+| artist_popularity |
+| artist_followers (log-scaled) |
+| n_artist_genres |
+
+K-NN was used due to the fact that it is lightweight, simple, interpretable, very fast, and requires no training labels.
+
 **Model Artifacts:**
 
 * **`X_full.pkl`** - Dataset used for nearest neighbor searches.
 * **`scaler.pkl`** - Fitted scaler object.
 * **`nn_model.pkl`** - Trained k-NN model.
+* **`feature_order.json`** - Column order for future transforms.
+
+## Deployment
 
 ### Flask API Deployment
 
@@ -74,36 +89,6 @@ GET /recommend/<track_id>?k=<num>
 
 Returns a JSON response of recommended tracks.
 
-### Shiny App Front-end
-
-The interactive quiz UI was built using R Shiny:
-
-* Users guess the song name and artist name from the displayed Spotify cover art.
-* After each guess, the model provides similar song recommendations.
-* Users can play up to five rounds in a session, with scores calculated based on how many they got corrected out of the total songs.
-
-## Results
-
-The deployed Shiny application allows users to play a quiz to test their music knowledge and memory.
-
-**Example of The Quiz:**
-
-![Shiny App Screenshot](imgs/shiny_quiz_example.png "Spotify Cover Art Quiz Example")
-
-## Deployment
-
-The application components are hosted separately:
-
-* **Quiz UI:** R Shiny hosted on shinyapps.io.
-* **Recommendation API:** Flask API running inside a Docker container on Amazon EC2 instance.
-
-### Deploying the Shiny App:
-
-```r
-library(rsconnect)
-rsconnect::deployApp("src/r_shiny_app", appName="spotify-cover-art-quiz")
-```
-
 ### Running the Flask API (Docker on EC2):
 
 ```bash
@@ -114,6 +99,27 @@ docker run -d --name spotify-api \
   --restart unless-stopped \
   -p 8000:8000 spotify-api
 ```
+
+### Shiny App Front-end
+
+The interactive quiz UI was built using R Shiny and hosted on shinyapps.io
+
+### Deploying the Shiny App:
+
+```r
+library(rsconnect)
+rsconnect::deployApp("src/r_shiny_app", appName="spotify-cover-art-quiz")
+```
+
+## Results
+
+The deployed Shiny application allows users to play a quiz to test their music knowledge and memory. The user has five rounds in a single session to guess the song name and artist name based on cover art. After answering, the applications shows the answers and shows whether or not the user guessed the song and artist name correctly. The user is awarded 0.5 points for correctly guessing the song name or artist name. After each round, the quiz recommends similar songs based on the recommendation model
+
+**Example of The Quiz:**
+
+![Shiny App Screenshot](imgs/shiny_quiz_example.png "Spotify Cover Art Quiz Example")
+
+### Live Shiny App - [Spotify Cover Art Quiz](https://dwen.shinyapps.io/spotify-cover-art-quiz/)
 
 ---
 
