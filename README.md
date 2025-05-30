@@ -28,7 +28,7 @@ This histogram shows the distribution of countries for the artists featured in t
 
 ### Distribution of Top Genres
 
-This barplot shows the distribution of the top genres featured in the playlist. Soft pop is the most frequent genre, followed by rap”and pop, with all other genres appearing only once
+This barplot shows the distribution of the top genres featured in the playlist. Soft pop is the most frequent genre, followed by rap and pop, with all other genres appearing only once
 
 ![Top Genres Histogram](imgs/genres_top15.png "Top Genres Barplot")
 
@@ -47,6 +47,16 @@ Data was gathered and stored using Spotify’s Web API with a Python script `src
 * Track metadata includes song name, artists, popularity, duration, explicitness, and cover art URL.
 * Artist metadata includes genres, artist popularity, and followers.
 
+| Numeric features |
+|------------------|
+| popularity (track) |
+| duration_ms |
+| explicit (0/1) |
+| age_days (days since release) |
+| artist_popularity |
+| artist_followers (log-scaled only in the model) |
+| n_artist_genres |
+
 ### Recommendation Model
 
 A recommendation system was developed using k-Nearest Neighbors (k-NN):
@@ -55,16 +65,6 @@ A recommendation system was developed using k-Nearest Neighbors (k-NN):
 * Each song is represented by a numeric feature vector
 * k-NN identifies tracks similar to a user-selected song.
 * Similarity measured using Euclidean distance after scaling
-
-| Numeric features |
-|------------------|
-| popularity (track) |
-| duration_ms |
-| explicit (0/1) |
-| age_days (days since release) |
-| artist_popularity |
-| artist_followers (log-scaled) |
-| n_artist_genres |
 
 K-NN was used due to the fact that it is lightweight, simple, interpretable, very fast, and requires no training labels.
 
@@ -79,7 +79,7 @@ K-NN was used due to the fact that it is lightweight, simple, interpretable, ver
 
 ### Flask API Deployment
 
-The recommendation model was served using a Flask API, deployed within a Docker container on Amazon EC2.
+The recommendation model was served using a Flask API, deployed within a Docker container on Amazon EC2. CORS is enabled in `app.py` so the Shiny front-end can call it. Dockerfile lives in `src/api`
 
 **Endpoint:**
 
@@ -90,6 +90,8 @@ GET /recommend/<track_id>?k=<num>
 Returns a JSON response of recommended tracks.
 
 ### Running the Flask API (Docker on EC2):
+
+The EC2 security group music allow inbound port 8000.
 
 ```bash
 cd ~/spotify-api
