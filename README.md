@@ -6,7 +6,7 @@
 
 ## Background
 
-The Spotify Cover Art Quiz is an interactive web-based application that quizzes users to identify song names and artist names in five rounds based solely on the Spotify cover artwork. The application leverages a recommendation model to suggest similar tracks if the user happens to enjoy the track. The songs are called from Spotify's Web API and are the top 50 most streamed songs on Spotify.
+The Spotify Cover Art Quiz is an interactive web-based application that quizzes users to identify song names and artist names in five rounds based solely on the Spotify cover artwork. The application leverages a recommendation model to suggest similar tracks if the user happens to enjoy the track. The songs are called from Spotify's Web API and are the top 50 most streamed songs on Spotify as of May 2025.
 
 ## Exploratory Data Analysis
 
@@ -24,13 +24,13 @@ This histogram shows the distribution of countries for the artists featured in t
 
 ### Distribution of Top Genres
 
-This barplot shows the distribution of the top genres featured in the playlist. Soft pop is the most frequent genre, followed by rap and pop, with all other genres appearing only once
+This barplot shows the distribution of the top genres featured in the playlist. Soft pop is the most frequent genre, followed by rap and pop, with all other genres appearing only once.
 
 ![Top Genres Histogram](imgs/genres_top15.png "Top Genres Barplot")
 
 ### Feature Correlation Heatmap
 
-The heatmap below illustrates correlations among numerical track metadata features, including popularity, duration, explicitness, and artist followers. Artist follower counts and artist popularity are strongly positively correlated, age (days since release) and track duration show a moderate positive relationship, and overall song popularity exhibits only very weak correlations with the other numeric features
+The heatmap below illustrates correlations among numerical track metadata features, including popularity, duration, explicitness, and artist followers. Artist follower counts and artist popularity are strongly positively correlated, age (days since release) and track duration show a moderate positive relationship, and overall song popularity exhibits only very weak correlations with the other numeric features.
 
 ![Feature Correlation Heatmap](imgs/corr_heatmap.png "Feature Correlation Heatmap")
 
@@ -47,9 +47,9 @@ The dataset was created by fetching data from the [Spotify playlist “Top 50 Mo
 
 A recommendation system was developed using k-Nearest Neighbors (k-NN):
 
-* All numerical features scaled using StandardScaler to ensure equal influence in distance calculations
+* All numerical features scaled using StandardScaler to ensure equal influence in distance calculations (one-hot encode for genre and countries)
 * Each song is represented by a numeric feature vector
-* k-NN identifies tracks similar to a user-selected song.
+* k-NN identifies tracks similar to a user-selected song
 * Similarity measured using Euclidean distance after scaling
 
 K-NN was used due to the fact that it is lightweight, simple, interpretable, very fast, and requires no training labels.
@@ -66,16 +66,16 @@ K-NN was used due to the fact that it is lightweight, simple, interpretable, ver
 
 **Model Artifacts:**
 
-* **`X_full.pkl`** - Dataset used for nearest neighbor searches.
-* **`scaler.pkl`** - Fitted scaler object.
-* **`nn_model.pkl`** - Trained k-NN model.
-* **`feature_order.json`** - Column order for future transforms.
+* **`X_full.pkl`** - Dataset used for nearest neighbor searches
+* **`scaler.pkl`** - Fitted scaler object
+* **`nn_model.pkl`** - Trained k-NN model
+* **`feature_order.json`** - Column order for future transforms
 
 ## Deployment
 
 ### Flask API Deployment
 
-The recommendation model was served using a Flask API, deployed within a Docker container on Amazon EC2. CORS is enabled in `app.py` so the Shiny front-end can call it. Dockerfile lives in `src/api`
+The recommendation model was served using a Flask API, deployed within a Docker container on Amazon EC2. CORS is enabled in `app.py` so the Shiny front-end can call it. The Dockerfile lives in the project root `spotify-api` on EC2 but is also in the directory `src/api`.
 
 **Endpoint:**
 
@@ -111,7 +111,7 @@ rsconnect::deployApp("src/r_shiny_app", appName="spotify-cover-art-quiz")
 
 ## Results
 
-The deployed Shiny application allows users to play a quiz to test their music knowledge and memory. The user has five rounds in a single session to guess the song name and artist name based on cover art. After answering, the applications shows the answers and shows whether or not the user guessed the song and artist name correctly. The user is awarded 0.5 points for correctly guessing the song name or artist name. After each round, the quiz recommends similar songs based on the recommendation model
+The deployed Shiny application allows users to play a quiz to test their music knowledge and memory. The user has five rounds in a single session to guess the song name and artist name based on cover art. After answering, the application shows the answers and shows whether or not the user guessed the song and artist name correctly. The user is awarded 0.5 points for correctly guessing the song name or artist name. After each round, the quiz recommends similar songs based on the recommendation model
 
 **Example of The Quiz:**
 
