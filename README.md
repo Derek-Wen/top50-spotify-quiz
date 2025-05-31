@@ -115,9 +115,8 @@ The deployed Shiny application allows users to play a quiz to test their music k
 
 **Example of The Quiz:**
 
-![Shiny App Screenshot](imgs/shiny_quiz_example.png "Spotify Cover Art Quiz Example")
+![Shiny App Screenshot](imgs/shiny_quiz_example4.png "Spotify Cover Art Quiz Example")
 ![Shiny App Screenshot](imgs/shiny_quiz_example2.png "Spotify Cover Art Quiz Example")
-![Shiny App Screenshot](imgs/shiny_quiz_example3.png "Spotify Cover Art Quiz Example")
 
 ---
 
