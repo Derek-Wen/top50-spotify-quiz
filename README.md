@@ -75,7 +75,7 @@ K-NN was used due to the fact that it is lightweight, simple, interpretable, ver
 
 ### Flask API Deployment
 
-The recommendation model was served using a Flask API, deployed within a Docker container on Amazon EC2. CORS is enabled in `app.py` so the Shiny front-end can call it. The Dockerfile lives in the project root `spotify-api` on EC2 but is also in the directory `src/api`.
+The recommendation model was served using a Flask API, deployed within a Docker container on Amazon EC2. CORS is enabled in `app.py` so the Shiny front-end can call it. The Dockerfile lives in the project root `spotify-api` on EC2 but is also in the GitHub directory `src/api`.
 
 **Endpoint:**
 
