@@ -10,10 +10,6 @@ The Spotify Cover Art Quiz is an interactive web-based application that quizzes 
 
 ## Exploratory Data Analysis
 
-Our dataset was created by fetching data from a Spotify playlist "Top 50 Most Streamed Songs" using Spotify's Web API.
-
-[Spotify Playlist](https://open.spotify.com/playlist/7z4ebkPXukjtS08NxvoyoN?si=7876a0a8a6f44e60)
-
 ### Distribution of Artist Followers
 
 This histogram shows the distribution of followers for the artists featured in the playlist. The distribution is highly left-skewed, with most artists having a very large following and few artists having a relatively smaller following.
@@ -42,20 +38,10 @@ The heatmap below illustrates correlations among numerical track metadata featur
 
 ### Data Collection
 
-Data was gathered and stored using Spotify’s Web API with a Python script `src/fetch_top50.py`:
+The dataset was created by fetching data from the [Spotify playlist “Top 50 Most Streamed Songs”](https://open.spotify.com/playlist/7z4ebkPXukjtS08NxvoyoN?si=7876a0a8a6f44e60) using Spotify’s Web API, with data collection and storage handled by a Python script (`src/fetch_top50.py`), and contains the following metadata:
 
 * Track metadata includes song name, artists, popularity, duration, explicitness, and cover art URL.
 * Artist metadata includes genres, artist popularity, and followers.
-
-| Numeric features |
-|------------------|
-| popularity (track) |
-| duration_ms |
-| explicit (0/1) |
-| age_days (days since release) |
-| artist_popularity |
-| artist_followers (log-scaled only in the model) |
-| n_artist_genres |
 
 ### Recommendation Model
 
@@ -68,12 +54,22 @@ A recommendation system was developed using k-Nearest Neighbors (k-NN):
 
 K-NN was used due to the fact that it is lightweight, simple, interpretable, very fast, and requires no training labels.
 
+| Numeric features |
+|------------------|
+| popularity (track) |
+| duration_ms |
+| explicit (0/1) |
+| age_days (days since release) |
+| artist_popularity |
+| artist_followers (log-scaled only in the model) |
+| n_artist_genres |
+
 **Model Artifacts:**
 
 * **`X_full.pkl`** - Dataset used for nearest neighbor searches.
 * **`scaler.pkl`** - Fitted scaler object.
 * **`nn_model.pkl`** - Trained k-NN model.
-* **`feature_order.json`** - Column order for future transforms.
+* **`feature_order.json`** - Column order for future transforms.
 
 ## Deployment
 
