@@ -85,6 +85,18 @@ GET /recommend/<track_id>?k=<num>
 
 Returns a JSON response of recommended tracks.
 
+Test input for terminal:
+
+```
+curl "http://ec2-54-183-183-87.us-west-1.compute.amazonaws.com:8000/recommend/0VjIjW4GlUZAMYd2vXMi3b?k=3"
+```
+
+Expected output:
+
+```
+[{"artists":"Billie Eilish","id":"2Fxmhks0bxGSBdJ92vM42m","name":"bad guy"},{"artists":"Billie Eilish, Khalid","id":"0u2P5u6lvoDfwTYjAADbn4","name":"lovely (with Khalid)"},{"artists":"Taylor Swift","id":"1BxfuPKGuaTgP7aM0Bbdwr","name":"Cruel Summer"}]
+```
+
 ### Running the Flask API (Docker on EC2):
 
 The EC2 security group must allow inbound port 8000.
